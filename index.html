@@ -26,8 +26,23 @@
           </ul>
         </nav>
         <div class="cta">
-          <button class="btn btn-outline" onclick="scrollToSection('contact')">Schedule Visit</button>
-          <button class="btn btn-gold" onclick="openCallback()">Get Callback</button>
+          <div class="cta-desktop">
+          
+            <button class="btn btn-outline" onclick="scrollToSection('contact')">Schedule Visit</button>
+            <button class="btn btn-gold" onclick="openCallback()">Get Callback</button>
+          </div>
+          <div class="cta-mobile">
+            <a href="tel:9811750130" class="cta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+              </svg>
+            </a>
+            <a href="https://wa.me/919811750130" class="cta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22a10 10 0 110-20 10 10 0 010 20zm-5-8v2a2 2 0 002 2h6a2 2 0 002-2v-2m-5-5h.01M12 16h.01"></path>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -54,6 +69,10 @@
             <div class="spec-label">Availability</div>
             <div class="price">Booking Open</div>
           </div>
+          <div class="spec">
+            <div class="spec-label">Payment Plan</div>
+            <div class="price">25:25:25:25</div>
+          </div>
         </div>
 
         <div class="features-grid">
@@ -74,7 +93,7 @@
 
       <aside class="hero-right">
         <div class="hero-image">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Property view">
+          <img src="./images/20250609_H6 Presentation_page-0001 (1).webp" alt="Property view">
         </div>
         <div class="quick">
           <div class="quick-item">
@@ -135,19 +154,19 @@
       </div>
       <div class="gallery-grid">
         <div class="gallery-item large fadeUp" onclick="openGallery(0)">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop" alt="Exterior view">
+          <img src="./images/6_page-0001.webp" alt="Exterior view">
         </div>
         <div class="gallery-item fadeUp" onclick="openGallery(1)">
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" alt="Living room">
+          <img src="./images/7_page-0001.webp" alt="Living room">
         </div>
         <div class="gallery-item fadeUp" onclick="openGallery(2)">
-          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop" alt="Master bedroom">
+          <img src="./images/13_page-0001.webp" alt="Master bedroom">
         </div>
         <div class="gallery-item fadeUp" onclick="openGallery(3)">
-          <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?q=80&w=800&auto=format&fit=crop" alt="Kitchen">
+          <img src="./images/14_page-0001.webp" alt="Kitchen">
         </div>
         <div class="gallery-item large fadeUp" onclick="openGallery(4)">
-          <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1600&auto=format&fit=crop" alt="Rooftop pool">
+          <img src="./images/15_page-0001.webp" alt="Rooftop pool">
         </div>
       </div>
     </section>
@@ -164,7 +183,7 @@
           <button class="plan-tab" onclick="switchPlan('5bhk', event)">5 BHK Penthouse</button>
         </div>
         <div class="plan-display" id="planDisplay">
-          <img id="planImage" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Floor plan">
+          <img id="planImage" src="./images/f1.webp" alt="Floor plan">
         </div>
         <div class="plan-viewer-actions">
           <button class="btn btn-gold" onclick="downloadPlan()">Download Floor Plan PDF</button>
@@ -179,7 +198,7 @@
       </div>
       <div class="plan-viewer fadeUp">
         <div class="plan-display">
-          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1400&auto=format&fit=crop" alt="Master plan layout">
+          <img src="./images/master-plan.webp" alt="Master plan layout">
         </div>
         <div class="plan-viewer-actions-flex">
           <button class="btn btn-gold" onclick="downloadMasterPlan()">Download Master Plan</button>
@@ -214,36 +233,140 @@
     </section>
 
     <section id="location">
-      <div class="section-title">
-        <h3>Location & Connectivity</h3>
-        <p class="muted">At the intersection of convenience and prestige</p>
+  <div class="section-title">
+    <h3>Location & Connectivity</h3>
+    <p class="muted">At the intersection of convenience and prestige</p>
+  </div>
+  
+  <div class="location-container">
+    <div class="location-map fadeUp">
+      <img src="./images/location-map.webp" alt="Location Map">
+    </div>
+    
+    <div class="location-info">
+      <div class="location-card fadeUp">
+        <div class="location-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12h14M5 12l4-4m-4 4l4 4m10-4l-4-4m4 4l-4 4"/>
+          </svg>
+        </div>
+        <h5>Connectivity</h5>
+        <p>Greater Noida Expressway • Yamuna Expressway • 0 km from Delhi with direct link for seamless travel</p>
       </div>
-      <div class="grid-3">
-        <div class="card fadeUp">
-          <h5>Connectivity</h5>
-          <p class="muted">Greater Noida Expressway • Yamuna Expressway • 0 km from Delhi (direct link)</p>
+      
+      <div class="location-card fadeUp">
+        <div class="location-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
         </div>
-        <div class="card fadeUp">
-          <h5>Nearby</h5>
-          <p class="muted">Amity University • Sikka Mall • Okhla Bird Sanctuary • Jasola, Nehru Place & Saket</p>
-        </div>
-        <div class="card fadeUp">
-          <h5>Transport</h5>
-          <p class="muted">Sector 18 metro station – 2 min • Jewar Airport connectivity via Yamuna Expressway</p>
-        </div>
+        <h5>Nearby Landmarks</h5>
+        <p>Amity University • Sikka Mall • Okhla Bird Sanctuary • Close to Jasola, Nehru Place & Saket</p>
       </div>
-    </section>
+      
+      <div class="location-card fadeUp">
+        <div class="location-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="6" width="18" height="12" rx="2"/>
+            <path d="M7 6V4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/>
+            <path d="M3 12h18"/>
+          </svg>
+        </div>
+        <h5>Transport Hub</h5>
+        <p>Sector 18 metro station – 2 min away • Jewar Airport connectivity via Yamuna Expressway</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="about">
-      <div class="section-title">
-        <h3>About M3M & Jacob & Co</h3>
-        <p class="muted">A collaboration that blends iconic design with residential excellence</p>
+<section id="about">
+  <div class="section-title">
+    <h3>About M3M & Jacob & Co</h3>
+    <p class="muted">A collaboration that blends iconic design with residential excellence</p>
+  </div>
+  
+  <div class="about-container">
+    <div class="about-visual fadeUp">
+      <div class="about-logo-container">
+        <img src="./images/7_page-0001.webp" alt="M3M Jacob & Co Logo">
       </div>
-      <div class="card fadeUp">
+      
+      <div class="about-stats">
+        <div class="about-stat">
+          <div class="about-stat-value">12.8</div>
+          <div class="about-stat-label">Acres</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-value">3-4</div>
+          <div class="about-stat-label">Homes/Floor</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="about-content">
+      <div class="about-text fadeUp">
         <p class="muted">JACOB & CO. M3M Residences in Sector 97, Noida is a landmark luxury development crafted through a visionary collaboration between M3M India and Jacob & Co. Sprawled across 12.8 acres, this project offers ultra-premium residences with signature finishes, imported materials, smart-home technology and dedicated concierge services. Designed for exclusivity, residences ensure privacy with only 3–4 homes per floor and an array of 7-star amenities and services for a curated lifestyle.</p>
       </div>
-    </section>
-
+      
+      <div class="about-highlights">
+        <div class="about-highlight fadeUp">
+          <div class="about-highlight-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="about-highlight-content">
+            <h6>Signature Finishes</h6>
+            <p>Imported materials & premium craftsmanship</p>
+          </div>
+        </div>
+        
+        <div class="about-highlight fadeUp">
+          <div class="about-highlight-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <div class="about-highlight-content">
+            <h6>Maximum Privacy</h6>
+            <p>Exclusive 3-4 residences per floor</p>
+          </div>
+        </div>
+        
+        <div class="about-highlight fadeUp">
+          <div class="about-highlight-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
+          </div>
+          <div class="about-highlight-content">
+            <h6>Smart Technology</h6>
+            <p>Integrated home automation systems</p>
+          </div>
+        </div>
+        
+        <div class="about-highlight fadeUp">
+          <div class="about-highlight-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="about-highlight-content">
+            <h6>Concierge Services</h6>
+            <p>7-star amenities & personalized care</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     <section id="contact">
       <div class="section-title">
         <h3>Schedule a Site Visit</h3>
@@ -283,7 +406,7 @@
     <div class="footer-content">
       <div>
         <div class="footer-brand">M3M & Jacob & Co</div>
-        <div class="footer-copy">© 2025 All Rights Reserved</div>
+        <div class="footer-copy"> 2025 All Rights Reserved</div>
       </div>
       <div class="muted">Sector 97, Central Noida • Possession: Sept, 2031</div>
     </div>

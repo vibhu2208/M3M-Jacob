@@ -36,9 +36,9 @@ function scrollToSection(id){
   }
   
   const planImages = {
-    '3bhk': 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop',
-    '4bhk': 'https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1200&auto=format&fit=crop',
-    '5bhk': 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?q=80&w=1200&auto=format&fit=crop'
+    '3bhk': './images/f1.webp',
+    '4bhk': './images/f2.webp',
+    '5bhk': './images/f3.webp'
   };
   
   function switchPlan(type, event){

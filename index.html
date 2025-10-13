@@ -455,16 +455,15 @@
       </div>
       <div class="contact-wrap">
         <div>
-          <form id="contactForm" class="contact-form" onsubmit="return submitForm(event)">
-            <input type="text" id="name" placeholder="Full name" required />
-            <input type="email" id="email" placeholder="Email address" required />
-            <input type="tel" id="phone" placeholder="Phone number" required />
-            <select id="interest">
+          <form id="contactForm" class="contact-form" action="form.php" method="post">
+            <input type="text" id="name" name="name" placeholder="Full name" required />
+            <input type="email" id="email" name="email" placeholder="Email address" required />
+            <input type="tel" id="mobile" name="mobile" placeholder="Phone number" required />
+            <select id="project" name="project" required>
               <option value="3bhk">3 BHK + SR – 2500 SQ.FT</option>
               <option value="4bhk">4 BHK + SR – 4500 SQ.FT</option>
               <option value="5bhk">5 BHK + SR – 6400 SQ.FT</option>
             </select>
-            <textarea id="message" rows="4" placeholder="Preferred visit date / questions"></textarea>
             <div class="contact-form-actions">
               <button class="btn btn-gold" type="submit">Request Callback</button>
               <button class="btn btn-outline" type="button" onclick="callNow()">Call: 9811750130</button>

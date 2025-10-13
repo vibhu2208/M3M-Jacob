@@ -47,16 +47,45 @@ function scrollToSection(id){
     return false;
   }
   
-  const items = document.querySelectorAll('.fadeUp');
+  let items = [];
+  let ticking = false;
+  
   function reveal(){
     const top = window.innerHeight * 0.85;
     items.forEach(i => {
       const r = i.getBoundingClientRect();
-      if(r.top < top) i.classList.add('show');
+      if(r.top < top && r.bottom > 0) {
+        i.classList.add('show');
+      }
     });
+    ticking = false;
   }
-  window.addEventListener('scroll', reveal);
+  
+  function requestReveal() {
+    if (!ticking) {
+      window.requestAnimationFrame(reveal);
+      ticking = true;
+    }
+  }
+  
+  function initReveal() {
+    items = document.querySelectorAll('.fadeUp');
+    if (items.length > 0) {
+      reveal(); // Initial reveal
+    }
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReveal);
+  } else {
+    initReveal();
+  }
+  
   window.addEventListener('load', reveal);
+  window.addEventListener('scroll', requestReveal, { passive: true });
+  window.addEventListener('resize', requestReveal, { passive: true });
+  
+  setTimeout(reveal, 500);
   
   function openGallery(index){
     alert('Gallery viewer - Image ' + (index + 1) + '\n\nIn production, this would open a full-screen image viewer.');

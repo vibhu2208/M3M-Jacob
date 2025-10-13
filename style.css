@@ -1229,6 +1229,14 @@
       transform:none;
     }
     
+    /* Mobile fallback - show all fadeUp elements by default on mobile */
+    @media (max-width: 768px) {
+      .fadeUp {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+    
     .main-content{
       padding-top:110px;
     }

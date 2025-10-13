@@ -155,6 +155,9 @@ function scrollToSection(id){
       { src: './images/H6_Gf3rd Floor_page-0002.jpg', alt: 'Food Court Layout' },
       { src: './images/location-map.webp', alt: 'Location Map' },
       { src: './images/7_page-0001.webp', alt: 'M3M Jacob & Co Logo' },
+      { src: './images/f1.webp', alt: '3 BHK Floor Plan' },
+      { src: './images/f2.webp', alt: '4 BHK Floor Plan' },
+      { src: './images/f3.webp', alt: '5 BHK Floor Plan' },
       { src: './images/20250609_H6%20Presentation_page-0001%20(1).webp', alt: 'M3M & Jacob & Co Luxury Property' }
     ];
 
@@ -198,6 +201,9 @@ function scrollToSection(id){
       { src: './images/H6_Gf3rd Floor_page-0002.jpg', alt: 'Food Court Layout' },
       { src: './images/location-map.webp', alt: 'Location Map' },
       { src: './images/7_page-0001.webp', alt: 'M3M Jacob & Co Logo' },
+      { src: './images/f1.webp', alt: '3 BHK Floor Plan' },
+      { src: './images/f2.webp', alt: '4 BHK Floor Plan' },
+      { src: './images/f3.webp', alt: '5 BHK Floor Plan' },
       { src: './images/20250609_H6%20Presentation_page-0001%20(1).webp', alt: 'M3M & Jacob & Co Luxury Property' }
     ];
 
@@ -221,6 +227,9 @@ function scrollToSection(id){
       { src: './images/H6_Gf3rd Floor_page-0002.jpg', alt: 'Food Court Layout' },
       { src: './images/location-map.webp', alt: 'Location Map' },
       { src: './images/7_page-0001.webp', alt: 'M3M Jacob & Co Logo' },
+      { src: './images/f1.webp', alt: '3 BHK Floor Plan' },
+      { src: './images/f2.webp', alt: '4 BHK Floor Plan' },
+      { src: './images/f3.webp', alt: '5 BHK Floor Plan' },
       { src: './images/20250609_H6%20Presentation_page-0001%20(1).webp', alt: 'M3M & Jacob & Co Luxury Property' }
     ];
 
@@ -238,12 +247,29 @@ function scrollToSection(id){
     }
   }
   
+  function openFloorPlanGallery() {
+    // Get the currently active floor plan type
+    const activeTab = document.querySelector('.plan-tab.active');
+    const planType = activeTab ? activeTab.textContent.trim().toLowerCase().split(' ')[0] : '3bhk';
+
+    // Map plan types to gallery indices
+    const planIndexMap = {
+      '3bhk': 12, // f1.webp
+      '4bhk': 13, // f2.webp
+      '5bhk': 14  // f3.webp
+    };
+
+    // Open gallery at the appropriate index
+    const index = planIndexMap[planType] || 12;
+    openGallery(index);
+  }
+
   const planImages = {
     '3bhk': './images/f1.webp',
     '4bhk': './images/f2.webp',
     '5bhk': './images/f3.webp'
   };
-  
+
   function switchPlan(type, event){
     document.querySelectorAll('.plan-tab').forEach(t => t.classList.remove('active'));
     event.target.classList.add('active');

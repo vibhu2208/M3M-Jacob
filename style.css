@@ -1201,8 +1201,7 @@
   }
   
   .contact-form input,
-  .contact-form textarea,
-  .contact-form select{
+  .contact-form textarea{
     background:transparent;
     border:1px solid rgba(255,255,255,0.06);
     padding:12px;
@@ -1211,7 +1210,18 @@
     font-size:14px;
     font-family:inherit;
   }
-  
+  .contact-form select{
+    color: #fff;
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.06);
+    padding:12px;
+    border-radius:10px;
+    font-size:14px;
+    font-family:inherit;
+  }
+  .contact-form select option{
+    color: #313131;
+  }
   .contact-form input::placeholder,
   .contact-form textarea::placeholder{
     color:var(--muted);
@@ -1233,31 +1243,275 @@
     margin:0 0 8px;
   }
   
-  .contact-sidebar-actions{
-    margin-top:12px;
+  .contact-info {
+    margin-bottom: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    margin-bottom: 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    flex: 1;
+  }
+
+  .contact-item:hover {
+    background: rgba(197, 154, 60, 0.08);
+    border-color: rgba(197, 154, 60, 0.2);
+    transform: translateX(4px);
+  }
+
+  .contact-item svg {
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .contact-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .contact-item strong {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .contact-item .muted {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .assurance-points {
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .assurance-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    margin-bottom: 0;
+    background: rgba(76, 175, 80, 0.08);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    border-radius: 6px;
+    font-size: 12px;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+
+  .assurance-item:hover {
+    background: rgba(76, 175, 80, 0.12);
+    border-color: rgba(76, 175, 80, 0.3);
+    transform: translateX(2px);
+  }
+
+  .assurance-item svg {
+    color: #4CAF50;
+    flex-shrink: 0;
+  }
+
+  .contact-sidebar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-sidebar-actions .btn-outline {
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .contact-item {
+      padding: 10px;
+      gap: 10px;
+    }
+
+    .contact-item strong {
+      font-size: 15px;
+    }
+
+    .contact-item .muted {
+      font-size: 11px;
+    }
+
+    .assurance-item {
+      padding: 6px 10px;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .assurance-item span {
+      font-size: 11px;
+    }
+
+    .contact-sidebar-actions {
+      gap: 10px;
+    }
+
+    .contact-sidebar-actions .btn,
+    .contact-sidebar-actions .btn-outline {
+      padding: 10px 16px;
+      font-size: 13px;
+    }
   }
   
   footer{
-    padding:28px 0;
+    padding:28px 0 40px;
     color:var(--muted);
     border-top:1px solid rgba(255,255,255,0.02);
+    background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
   }
-  
+
   .footer-content{
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:12px;
     flex-wrap:wrap;
+    margin-bottom: 32px;
   }
-  
+
+  .footer-info {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .footer-location,
+  .footer-possession {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
   .footer-brand{
     font-weight:700;
     margin-bottom:4px;
+    color: #fff;
+    font-size: 18px;
   }
-  
+
   .footer-copy{
     font-size:13px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .footer-disclaimer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .disclaimer-section h5 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .disclaimer-section p {
+    margin: 0 0 4px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+  }
+
+  .disclaimer-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal-disclaimer {
+    padding: 20px;
+    background: rgba(197, 154, 60, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(197, 154, 60, 0.2);
+  }
+
+  .legal-disclaimer h5 {
+    margin: 0 0 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .legal-disclaimer p {
+    margin: 0 0 12px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+  }
+
+  .legal-disclaimer p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .footer-info {
+      gap: 16px;
+    }
+
+    .footer-disclaimer {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .disclaimer-section h5 {
+      font-size: 15px;
+    }
+
+    .disclaimer-section p {
+      font-size: 13px;
+    }
+
+    .legal-disclaimer {
+      padding: 16px;
+    }
+
+    .legal-disclaimer h5 {
+      font-size: 15px;
+    }
+
+    .legal-disclaimer p {
+      font-size: 12px;
+    }
   }
   
   @media(max-width:980px){
@@ -1633,6 +1887,43 @@
       
       .stat-highlight .stat-value {
         font-size: 20px;
+      }
+      
+      /* Contact sidebar responsive styles */
+      .contact-info {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .contact-item {
+        padding: 8px;
+        gap: 8px;
+        margin-bottom: 0;
+      }
+      .contact-item strong {
+        font-size: 14px;
+      }
+      .contact-item .muted {
+        font-size: 10px;
+      }
+      .assurance-points {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .assurance-item {
+        padding: 4px 6px;
+        font-size: 11px;
+        margin-bottom: 0;
+      }
+      .assurance-item span {
+        font-size: 10px;
+      }
+      .contact-sidebar-actions {
+        gap: 8px;
+      }
+      .contact-sidebar-actions .btn,
+      .contact-sidebar-actions .btn-outline {
+        padding: 8px 12px;
+        font-size: 12px;
       }
     }
     

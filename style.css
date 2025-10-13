@@ -27,7 +27,7 @@
   }
   
   body {
-    background: linear-gradient(135deg, #8B0000 0%, #5C0000 50%, #2D0000 100%);
+    /* background: linear-gradient(135deg, #8B0000 0%, #5C0000 50%, #2D0000 100%); */
     background-attachment: fixed;
   }
   
@@ -368,11 +368,11 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-size: 24px;
+    font-size: 22px;
   }
   
   .stat-success .stat-value {
-    color: #4ade80;
+    color: #e9c80e;
   }
   
   .hero-features {

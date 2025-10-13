@@ -258,13 +258,202 @@ function scrollToSection(id){
   }
   
   function downloadPlan(){
-    alert('Floor plan download initiated.\n\nIn production, this would download the selected floor plan PDF.');
+    // Show loading state
+    const button = event.target;
+    const originalText = button.textContent;
+    button.textContent = 'Preparing Download...';
+    button.disabled = true;
+
+    // Simulate preparation time
+    setTimeout(() => {
+      try {
+        // Create a simple PDF download
+        // In a real implementation, this would be a proper PDF file URL
+        const link = document.createElement('a');
+        link.href = './documents/floor-plan-3bhk.pdf'; // Default to 3BHK
+        link.download = 'M3M-Jacob-Co-Floor-Plan.pdf';
+        link.style.display = 'none';
+
+        // Add to DOM and click
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // Show success message
+        alert('Floor plan PDF download started successfully!');
+
+      } catch (error) {
+        console.error('Download failed:', error);
+        alert('Download failed. Please contact our sales team for the floor plan.');
+
+      } finally {
+        // Reset button
+        button.textContent = originalText;
+        button.disabled = false;
+      }
+    }, 1000);
   }
   
+  function downloadPlan(){
+    // Get the currently displayed floor plan image
+    const planImage = document.getElementById('planImage');
+    const imageSrc = planImage ? planImage.src : './images/f1.webp';
+
+    // Get the currently active floor plan type for naming
+    const activeTab = document.querySelector('.plan-tab.active');
+    const planType = activeTab ? activeTab.textContent.trim().toLowerCase().split(' ')[0] : '3bhk';
+
+    // Show loading state
+    const button = event.target;
+    const originalText = button.textContent;
+    button.textContent = 'Preparing Download...';
+    button.disabled = true;
+    button.style.background = 'linear-gradient(135deg, #f39c12, #e67e22)';
+
+    // Simulate preparation time
+    setTimeout(() => {
+      try {
+        // Create download link for the current image
+        const link = document.createElement('a');
+        link.href = imageSrc;
+        link.download = `M3M-Jacob-Co-${planType.toUpperCase()}-Floor-Plan.webp`;
+        link.style.display = 'none';
+
+        // Add to DOM and trigger download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // Show success state on button
+        button.textContent = '✓ Downloaded!';
+        button.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+        button.style.transform = 'scale(1.05)';
+        button.style.boxShadow = '0 4px 16px rgba(39, 174, 96, 0.4)';
+
+        // Reset button after 3 seconds
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+          button.style.background = '';
+          button.style.transform = '';
+          button.style.boxShadow = '';
+        }, 3000);
+
+      } catch (error) {
+        console.error('Download failed:', error);
+
+        // Show error state
+        button.textContent = '✗ Failed';
+        button.style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
+        button.style.transform = 'scale(1.05)';
+
+        // Reset after 2 seconds
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+          button.style.background = '';
+          button.style.transform = '';
+        }, 2000);
+
+      }
+    }, 1000);
+  }
+
   function downloadMasterPlan(){
-    alert('Master plan download initiated.\n\nIn production, this would download the complete master plan PDF.');
+    // Show loading state
+    const button = event.target;
+    const originalText = button.textContent;
+    button.textContent = 'Preparing Download...';
+    button.disabled = true;
+    button.style.background = 'linear-gradient(135deg, #f39c12, #e67e22)';
+
+    // Simulate preparation time
+    setTimeout(() => {
+      try {
+        // Download the master plan image
+        const link = document.createElement('a');
+        link.href = './images/master-plan.webp';
+        link.download = 'M3M-Jacob-Co-Master-Plan.webp';
+        link.style.display = 'none';
+
+        // Add to DOM and trigger download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // Show success state on button
+        button.textContent = '✓ Downloaded!';
+        button.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+        button.style.transform = 'scale(1.05)';
+        button.style.boxShadow = '0 4px 16px rgba(39, 174, 96, 0.4)';
+
+        // Reset button after 3 seconds
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+          button.style.background = '';
+          button.style.transform = '';
+          button.style.boxShadow = '';
+        }, 3000);
+
+      } catch (error) {
+        console.error('Download failed:', error);
+
+        // Show error state
+        button.textContent = '✗ Failed';
+        button.style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
+        button.style.transform = 'scale(1.05)';
+
+        // Reset after 2 seconds
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+          button.style.background = '';
+          button.style.transform = '';
+        }, 2000);
+
+      }
+    }, 1000);
   }
-  
+
   function viewInteractive(){
-    alert('Opening interactive map viewer.\n\nIn production, this would open an interactive 3D site map.');
+    // Show loading state
+    const button = event.target;
+    const originalText = button.textContent;
+    button.textContent = 'Loading Interactive Map...';
+    button.disabled = true;
+    button.style.background = 'linear-gradient(135deg, #9b59b6, #8e44ad)';
+
+    // Simulate loading time
+    setTimeout(() => {
+      try {
+        // Show coming soon state
+        button.textContent = 'Coming Soon!';
+        button.style.background = 'linear-gradient(135deg, #3498db, #2980b9)';
+        button.style.transform = 'scale(1.05)';
+
+        // Reset after 3 seconds
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+          button.style.background = '';
+          button.style.transform = '';
+        }, 3000);
+
+      } catch (error) {
+        console.error('Interactive map failed:', error);
+
+        // Show error state
+        button.textContent = '✗ Unavailable';
+        button.style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
+
+        // Reset after 2 seconds
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+          button.style.background = '';
+        }, 2000);
+
+      }
+    }, 1000);
   }

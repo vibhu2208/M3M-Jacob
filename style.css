@@ -193,6 +193,22 @@
     box-shadow: 0 6px 16px rgba(197, 154, 60, 0.5);
   }
   
+  .btn {
+    transition: all 0.3s ease;
+  }
+
+  .btn:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .btn:disabled:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
   .hero {
     min-height: 85vh;
     display: grid;
@@ -1951,7 +1967,7 @@
 .plan-cta {
   /* background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%); */
   border-radius: 20px;
-  padding: 32px;
+  padding: 15px;
   border: 1px solid rgba(212, 165, 116, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   position: relative;

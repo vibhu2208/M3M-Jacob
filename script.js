@@ -1,3 +1,30 @@
+// Mobile Menu Toggle Functions
+function toggleMenu() {
+  const nav = document.getElementById('mainNav');
+  const hamburger = document.querySelector('.hamburger');
+  nav.classList.toggle('active');
+  hamburger.classList.toggle('active');
+}
+
+function closeMenu() {
+  const nav = document.getElementById('mainNav');
+  const hamburger = document.querySelector('.hamburger');
+  nav.classList.remove('active');
+  hamburger.classList.remove('active');
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+  const nav = document.getElementById('mainNav');
+  const hamburger = document.querySelector('.hamburger');
+  const isClickInsideNav = nav?.contains(event.target);
+  const isClickOnHamburger = hamburger?.contains(event.target);
+  
+  if (!isClickInsideNav && !isClickOnHamburger && nav?.classList.contains('active')) {
+    closeMenu();
+  }
+});
+
 function scrollToSection(id){
     const el = document.getElementById(id);
     if(el) el.scrollIntoView({behavior:'smooth', block:'start'});

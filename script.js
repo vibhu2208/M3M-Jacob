@@ -483,3 +483,112 @@ function scrollToSection(id){
       }
     }, 1000);
   }
+
+// Private Preview Popup Functions
+function openPrivatePreviewPopup() {
+  const modal = document.getElementById('privatePreviewModal');
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+
+  // Focus on first input
+  setTimeout(() => {
+    document.getElementById('previewName').focus();
+  }, 100);
+}
+
+function closePrivatePreviewPopup() {
+  const modal = document.getElementById('privatePreviewModal');
+  modal.classList.remove('show');
+  document.body.style.overflow = '';
+
+  // Reset form
+  const form = document.getElementById('privatePreviewForm');
+  form.reset();
+}
+
+// Handle form submission
+document.getElementById('privatePreviewForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('previewName').value.trim();
+  const email = document.getElementById('previewEmail').value.trim();
+  const phone = document.getElementById('previewPhone').value.trim();
+  const project = document.getElementById('previewProject').value;
+
+  if (!name || !email || !phone || !project) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+
+  // Create form data for submission
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('email', email);
+  formData.append('mobile', phone);
+  formData.append('project', project);
+
+  // Disable submit button
+  const submitBtn = document.querySelector('.btn-submit');
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = 'Booking...';
+  submitBtn.disabled = true;
+
+  // Submit to form.php
+  fetch('form.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.text())
+  .then(data => {
+    // Check if the response contains success message
+    if (data.includes('Thank You!') || data.includes('successfully')) {
+      alert('Thank you! Your private preview request has been submitted successfully. We will contact you shortly.');
+      closePrivatePreviewPopup();
+      document.getElementById('privatePreviewForm').reset();
+    } else if (data.includes('Error:')) {
+      // Extract error message from PHP response
+      const errorMatch = data.match(/alert\('([^']+)'\)/);
+      if (errorMatch) {
+        alert(errorMatch[1]);
+      } else {
+        alert('There was an error submitting your request. Please try again.');
+      }
+    } else {
+      alert('Thank you! We will contact you shortly.');
+      closePrivatePreviewPopup();
+      document.getElementById('privatePreviewForm').reset();
+    }
+
+    // Reset button
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Something went wrong. Please try again or contact us directly.');
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  });
+});
+
+// Close modal when clicking outside
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('privatePreviewModal');
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === this) {
+        closePrivatePreviewPopup();
+      }
+    });
+  }
+});
+
+// Close modal with Escape key (global listener)
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' || e.keyCode === 27) {
+    const modal = document.getElementById('privatePreviewModal');
+    if (modal && modal.classList.contains('show')) {
+      closePrivatePreviewPopup();
+    }
+  }
+});

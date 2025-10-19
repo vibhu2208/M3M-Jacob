@@ -18,60 +18,27 @@
     </div>
   </section> -->
 
-  <header>
-    <div class="container">
-      <div class="nav">
-        <!-- Logo (Left in Mobile) -->
-        <div class="brand">
-          <img src="./logo.webp" alt="M3M Jacob & Co logo" loading="eager">
-        </div>
-
-        <!-- Desktop Navigation (Desktop Only) -->
-        <nav aria-label="main" class="desktop-nav">
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#plans">Floor Plans</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#location">Location</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-
-        <!-- Desktop CTA Buttons (Desktop Only) -->
-        <div class="cta">
-          <div class="cta-desktop">
-            <a href="tel:+91 9811750130" class="btn btn-outline phone-btn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px; margin-right: 8px;">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
-              </svg>
-              9811750130
-            </a>
-            <a href="https://wa.me/919811750130" class="btn btn-gold whatsapp-btn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px; margin-right: 8px;">
-                <path d="M12 22a10 10 0 110-20 10 10 0 010 20zm-5-8v2a2 2 0 002 2h6a2 2 0 002-2v-2m-5-5h.01M12 16h.01"></path>
-              </svg>
-              WhatsApp
-            </a>
-          </div>
-        </div>
-
-        <!-- Mobile Phone Icon (Right in Mobile) -->
-        <div class="mobile-phone-icon">
-          <a href="tel:9811750130" class="phone-icon-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
   <!-- Hero Section with Featured Image -->
   <section class="top-hero">
     <div class="top-hero-container">
-      <img src="./images/20_page-0001.webp" alt="M3M & Jacob & Co Featured Property" class="top-hero-image" loading="eager">
+      <img src="./images/Residential_2000X1125-1-1536x864.webp" alt="M3M & Jacob & Co Featured Property" class="top-hero-image" loading="eager">
+      <!-- Logo Overlay -->
+      <div class="top-hero-logo">
+        <img src="./images/STATIONERY_M3M-18-1-1.svg" alt="M3M Jacob & Co logo" loading="eager">
+      </div>
     </div>
   </section>
+
+  <!-- Simple Logo Section -->
+  <div class="simple-logo">
+    <div class="container">
+      <div class="simple-logo-content">
+        <img src="./images/STATIONERY_M3M-18-1-1.svg" alt="M3M Jacob & Co logo" loading="eager">
+        <button class="btn-private-preview" onclick="openPrivatePreviewPopup()">Book Your Private Preview</button>
+      </div>
+    </div>
+  </div>
+
  <main class="container main-content" id="home">
   <section class="hero">
     <div class="hero-content">
@@ -142,7 +109,7 @@
     <div class="hero-visual">
       <div class="visual-container">
         <div class="image-wrapper">
-          <img src="./images/20250609_H6%20Presentation_page-0001%20(1).webp" alt="M3M & Jacob & Co Luxury Property" loading="eager" onerror="this.src='./images/7_page-0001.webp'" onclick="openGallery(12)">
+          <img src="./images/About_project.webp" alt="M3M & Jacob & Co Luxury Property" loading="eager" onerror="this.src='./images/7_page-0001.webp'" onclick="openGallery(12)">
           <div class="image-overlay"></div>
         </div>
         
@@ -650,5 +617,49 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- Private Preview Popup Modal -->
+  <div id="privatePreviewModal" class="private-preview-modal">
+    <div class="private-preview-modal-content">
+      <span class="private-preview-close" onclick="closePrivatePreviewPopup()">&times;</span>
+      <div class="private-preview-header">
+        <h3>Book Your Private Preview</h3>
+        <p>Get exclusive access to M3M & Jacob & Co luxury residences</p>
+      </div>
+      <form id="privatePreviewForm" class="private-preview-form" action="form.php" method="post">
+        <div class="form-group">
+          <label for="previewName">Full Name *</label>
+          <input type="text" id="previewName" name="name" required placeholder="Enter your full name">
+        </div>
+        <div class="form-group">
+          <label for="previewEmail">Email Address *</label>
+          <input type="email" id="previewEmail" name="email" required placeholder="Enter your email address">
+        </div>
+        <div class="form-group">
+          <label for="previewPhone">Phone Number *</label>
+          <input type="tel" id="previewPhone" name="mobile" required placeholder="Enter your phone number">
+        </div>
+        <div class="form-group">
+          <label for="previewProject">Preferred Project *</label>
+          <select id="previewProject" name="project" required>
+            <option value="">Select a project</option>
+            <option value="3bhk">3 BHK + SR – 2500 SQ.FT</option>
+            <option value="4bhk">4 BHK + SR – 4500 SQ.FT</option>
+            <option value="5bhk">5 BHK + SR – 6400 SQ.FT</option>
+            <option value="private-preview">Private Preview Request</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">Book Private Preview</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sticky Phone Button -->
+  <a href="tel:+919811750130" class="sticky-phone" aria-label="Call us">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+    </svg>
+    <span class="phone-number-sticky">+91 98117 50130</span>
+  </a>
 </body>
 </html>

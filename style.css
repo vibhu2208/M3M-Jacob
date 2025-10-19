@@ -822,11 +822,12 @@
   }
   
   .plan-viewer{
-    background:linear-gradient(180deg, rgba(197, 154, 60, 0.05), rgba(197, 154, 60, 0.02));
+    background:transparent;
     border-radius:12px;
     padding:0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
     overflow: hidden;
+    border: none;
   }
   
   .plan-tabs{
@@ -1216,7 +1217,8 @@
   }
   
   .contact-form input,
-  .contact-form textarea{
+  .contact-form textarea,
+  .contact-form select{
     background:transparent;
     border:1px solid rgba(255,255,255,0.06);
     padding:12px;
@@ -1224,6 +1226,31 @@
     color:#fff;
     font-size:14px;
     font-family:inherit;
+  }
+  
+  .contact-form select{
+    width: 100%;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23bfb8a6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    padding-right: 40px;
+    background-color: transparent;
+  }
+  
+  .contact-form select:focus{
+    outline: none;
+    border-color: rgba(197, 154, 60, 0.3);
+  }
+  
+  .contact-form select option{
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 10px;
   }
   .form-group select {
     padding: 15px;
@@ -1258,6 +1285,26 @@
   .contact-form input::placeholder,
   .contact-form textarea::placeholder{
     color:var(--muted);
+  }
+
+  /* Inline form messages */
+  .form-success-message{
+    margin-top:10px;
+    padding:12px 14px;
+    border-radius:10px;
+    font-size:14px;
+    line-height:1.4;
+    border:1px solid transparent;
+  }
+  .form-success-message.success{
+    background: rgba(39, 174, 96, 0.12);
+    border-color: rgba(39, 174, 96, 0.35);
+    color: #b7f7ce;
+  }
+  .form-success-message.error{
+    background: rgba(231, 76, 60, 0.12);
+    border-color: rgba(231, 76, 60, 0.35);
+    color: #ffb3ad;
   }
   
   .contact-form-actions{
@@ -1671,9 +1718,13 @@
   /* Responsive */
   @media (max-width: 768px) {
     .simple-logo-content {
-      flex-direction: column;
-      gap: 20px;
-      text-align: center;
+      
+      justify-content: center;
+      
+    }
+    
+    .simple-logo img {
+      display: none;
     }
 
     .private-preview-modal-content {
@@ -1686,9 +1737,10 @@
     }
 
     .btn-private-preview {
-      padding: 10px 20px;
-      font-size: 14px;
-      min-width: 180px;
+      padding: 10px 16px;
+      font-size: 13px;
+      min-width: auto;
+      white-space: nowrap;
     }
   }
 

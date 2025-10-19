@@ -41,9 +41,53 @@ function scrollToSection(id){
   
   function submitForm(e){
     e.preventDefault();
-    const name = document.getElementById('name').value;
-    alert('Thanks ' + name + '. Our sales concierge will contact you shortly.');
-    document.getElementById('contactForm').reset();
+    const form = document.getElementById('contactForm');
+    const messageBox = document.getElementById('contactFormMessage');
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const project = document.getElementById('project').value;
+
+    if (!name || !email || !mobile || !project) {
+      if (messageBox) {
+        messageBox.style.display = 'block';
+        messageBox.textContent = 'Please fill in all required fields.';
+        messageBox.className = 'form-success-message error';
+      }
+      return false;
+    }
+
+    const formData = new FormData(form);
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
+
+    fetch(form.action || 'https://m3mindiajacobco.com/form.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(r => r.text())
+    .then(data => {
+      if (messageBox) {
+        messageBox.style.display = 'block';
+        messageBox.textContent = 'Thank you! Your request has been submitted successfully. We will contact you shortly.';
+        messageBox.className = 'form-success-message success';
+      }
+      form.reset();
+    })
+    .catch(err => {
+      console.error(err);
+      if (messageBox) {
+        messageBox.style.display = 'block';
+        messageBox.textContent = 'Something went wrong. Please try again or call us.';
+        messageBox.className = 'form-success-message error';
+      }
+    })
+    .finally(() => {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    });
     return false;
   }
   
@@ -143,22 +187,22 @@ function scrollToSection(id){
 
     // Define all images with their sources and captions
     const images = [
-      { src: './images/6_page-0001.webp', alt: 'Exterior view' },
-      { src: './images/7_page-0001.webp', alt: 'Living room' },
-      { src: './images/13_page-0001.webp', alt: 'Master bedroom' },
-      { src: './images/14_page-0001.webp', alt: 'Kitchen' },
-      { src: './images/15_page-0001.webp', alt: 'Rooftop pool' },
-      { src: './images/16_page-0001.webp', alt: 'Additional view' },
-      { src: './images/17_page-0001.webp', alt: 'Additional view' },
-      { src: './images/master-plan.webp', alt: 'Master plan layout' },
-      { src: './images/H6_Gf3rd Floor_page-0001.jpg', alt: 'Ground Floor Layout' },
-      { src: './images/H6_Gf3rd Floor_page-0002.jpg', alt: 'Food Court Layout' },
-      { src: './images/location-map.webp', alt: 'Location Map' },
-      { src: './images/7_page-0001.webp', alt: 'M3M Jacob & Co Logo' },
-      { src: './images/f1.webp', alt: '3 BHK Floor Plan' },
-      { src: './images/f2.webp', alt: '4 BHK Floor Plan' },
-      { src: './images/f3.webp', alt: '5 BHK Floor Plan' },
-      { src: './images/20250609_H6%20Presentation_page-0001%20(1).webp', alt: 'M3M & Jacob & Co Luxury Property' }
+      { src: './images/6_page-0001.webp', alt: 'Iconic exterior facade of M3M Jacob & Co residences' },
+      { src: './images/7_page-0001.webp', alt: 'Elegant living room at M3M Jacob & Co, Sector 97 Noida' },
+      { src: './images/13_page-0001.webp', alt: 'Spacious master bedroom with premium finishes' },
+      { src: './images/14_page-0001.webp', alt: 'Designer kitchen with modern appliances' },
+      { src: './images/15_page-0001.webp', alt: 'Rooftop infinity pool overlooking Noida skyline' },
+      { src: './images/16_page-0001.webp', alt: 'Luxury interior detailing and lounge area' },
+      { src: './images/17_page-0001.webp', alt: 'Grand lobby and lifestyle spaces' },
+      { src: './images/master-plan.webp', alt: 'Master plan layout of M3M Jacob & Co Sector 97 Noida' },
+      { src: './images/H6_Gf3rd Floor_page-0001.jpg', alt: 'Ground floor layout with premium amenities' },
+      { src: './images/H6_Gf3rd Floor_page-0002.jpg', alt: 'Food court and retail layout' },
+      { src: './images/location-map.webp', alt: 'Location map of M3M Jacob & Co Sector 97 Noida' },
+      { src: './images/7_page-0001.webp', alt: 'M3M Jacob & Co brand visual' },
+      { src: './images/f1.webp', alt: '3 BHK + SR floor plan at M3M Jacob & Co' },
+      { src: './images/f2.webp', alt: '4 BHK + SR floor plan at M3M Jacob & Co' },
+      { src: './images/f3.webp', alt: '5 BHK + SR floor plan at M3M Jacob & Co' },
+      { src: './images/20250609_H6%20Presentation_page-0001%20(1).webp', alt: 'Premium luxury residences by M3M and Jacob & Co in Noida' }
     ];
 
     // Show the selected image
@@ -533,31 +577,20 @@ document.getElementById('privatePreviewForm').addEventListener('submit', functio
   submitBtn.textContent = 'Booking...';
   submitBtn.disabled = true;
 
-  // Submit to form.php
-  fetch('form.php', {
+  // Submit to live form endpoint
+  fetch('https://m3mindiajacobco.com/form.php', {
     method: 'POST',
     body: formData
   })
   .then(response => response.text())
   .then(data => {
-    // Check if the response contains success message
-    if (data.includes('Thank You!') || data.includes('successfully')) {
-      alert('Thank you! Your private preview request has been submitted successfully. We will contact you shortly.');
-      closePrivatePreviewPopup();
-      document.getElementById('privatePreviewForm').reset();
-    } else if (data.includes('Error:')) {
-      // Extract error message from PHP response
-      const errorMatch = data.match(/alert\('([^']+)'\)/);
-      if (errorMatch) {
-        alert(errorMatch[1]);
-      } else {
-        alert('There was an error submitting your request. Please try again.');
-      }
-    } else {
-      alert('Thank you! We will contact you shortly.');
-      closePrivatePreviewPopup();
-      document.getElementById('privatePreviewForm').reset();
+    const msg = document.getElementById('privatePreviewMessage');
+    if (msg) {
+      msg.style.display = 'block';
+      msg.textContent = 'Thank you! Your private preview request has been submitted successfully. We will contact you shortly.';
+      msg.className = 'form-success-message success';
     }
+    document.getElementById('privatePreviewForm').reset();
 
     // Reset button
     submitBtn.textContent = originalText;
@@ -565,7 +598,12 @@ document.getElementById('privatePreviewForm').addEventListener('submit', functio
   })
   .catch(error => {
     console.error('Error:', error);
-    alert('Something went wrong. Please try again or contact us directly.');
+    const msg = document.getElementById('privatePreviewMessage');
+    if (msg) {
+      msg.style.display = 'block';
+      msg.textContent = 'Something went wrong. Please try again or contact us directly.';
+      msg.className = 'form-success-message error';
+    }
     submitBtn.textContent = originalText;
     submitBtn.disabled = false;
   });
@@ -580,6 +618,11 @@ document.addEventListener('DOMContentLoaded', function() {
         closePrivatePreviewPopup();
       }
     });
+  }
+  // Attach handler for main contact form submit to show inline success
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', submitForm);
   }
 });
 
